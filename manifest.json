@@ -1,0 +1,11 @@
+{
+  "id": "notion-like-flow",
+  "name": "Notion-like Flow",
+  "version": "1.0.15",
+  "minAppVersion": "1.4.0",
+  "description": "Makes Obsidian feel like Notion / AFFiNE: slash menu, block handles + menu, Notion toggles & callouts, page icons + covers, breadcrumbs, word count, full-width & focus mode.",
+  "author": "Arena Agent",
+  "authorUrl": "",
+  "fundingUrl": "",
+  "isDesktopOnly": false
+}
