@@ -183,5 +183,5 @@ MIT — do what you want with it. Enjoy the flow ✦
 - Picker category icons: Lucide (ISC licence, (c) Lucide contributors) — bundled offline in `src/nav-icons.ts`.
 - Emoji catalog: Unicode emoji-test 15.1 + iamcal short-name aliases.
 
-  **AI Warning:**
+### !!!!AI Warning!!!!
 Yes, AI has been used in the making of this Plugin but I only used Native/Locally ran AI only in my PC. So, Total power consumption/environmental harm is lower then the usual. Also, note that I am not an developer by any means, I only do it for the fun &  and I do know programing languages like Python, JS and HTML. 
