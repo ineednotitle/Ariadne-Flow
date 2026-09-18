@@ -1,13 +1,14 @@
-# Notion-like Flow — Obsidian plugin
+# Ariadne Flow — Obsidian plugin
 
 Makes Obsidian feel like **Notion / AFFiNE** in both **Live Preview** and **Reading view**:
 
 - **`/` slash menu** — 44 commands with SF-style line icons: text formats (bold, italic, strikethrough, highlight, code, comment, math), page mentions, web/image links, tags, footnotes, headings, lists, to-dos, toggles, quotes, callouts (6 Notion colors), code, mermaid, math, tables, dividers, embeds, dates, templates, page icon/cover shortcuts
 - **Block gutter handle (`+` / `⠿`)** — hover any block to insert below, duplicate, delete, move up/down, copy text/link, **Turn into…**, and **drag to reorder**
 - **Notion toggles** — `> [!toggle]+ Title` renders as a clickable `▸` toggle
-- **Page icons + covers + breadcrumbs** — via frontmatter (`icon:`, `cover:`), with pickers and hover actions
+- **Page icons + covers + breadcrumbs** — via frontmatter (`icon:`, `cover:`). The icon picker is a WhatsApp-style panel: search field, sticky category headers, tight grid and a category bar along the bottom, drawn with flat Noto emoji (Google/WhatsApp art)
 - **Word count + reading time** in the status bar
 - **Full-width toggle + Focus mode** (hides sidebars, dims inactive blocks)
+- **File-explorer icons (Capacities style)** — a rounded 19px icon tile in front of every folder and file. Click a tile (or right-click → **Set icon**) to choose any of **3,773 emoji** or one of **157 Lucide icons** in 12 theme-adaptive colours; icons survive renames and deletes, and there is an optional near-black sidebar
 - **Notion typography** — cleaner fonts, spacing, dividers, checkboxes, tables
 
 No dependencies at runtime. No network calls. Your notes stay plain Markdown.
@@ -17,13 +18,15 @@ No dependencies at runtime. No network calls. Your notes stay plain Markdown.
 ## 1. Install (ready-to-use build)
 
 1. In your vault, create the folder:
-   `.obsidian/plugins/notion-like-flow/`
+   `.obsidian/plugins/ariadne-flow/`
 2. Copy these 3 files from this project into it:
    - `main.js`
    - `manifest.json`
    - `styles.css`
-3. In Obsidian: **Settings → Community plugins → turn off Safe mode → enable “Notion-like Flow”**.
+3. In Obsidian: **Settings → Community plugins → turn off Safe mode → enable “Ariadne Flow”**.
 4. Done — type `/` in any note.
+
+3b. **Coming from the old name?** The plugin id changed to `ariadne-flow` in 1.1.0. Obsidian treats that as a new install, so enable **“Ariadne Flow”** in Settings → Community plugins — on first run it copies your old `data.json` from `.obsidian/plugins/notion-like-flow/` automatically (settings, folder/file icons and API keys all carry over). You can delete that old folder afterwards.
 
 > Updating: replace the same 3 files and press **Reload** (or restart Obsidian).
 
@@ -32,7 +35,7 @@ No dependencies at runtime. No network calls. Your notes stay plain Markdown.
 Requirements: Node 18+.
 
 ```bash
-cd notion-like-flow
+cd ariadne-flow
 npm install
 npm run build     # → produces main.js (production, minified)
 # or: npm run dev # watch mode while developing
@@ -56,8 +59,10 @@ Type-check only: `npx tsc -noEmit -skipLibCheck`
 | Focus mode | Ribbon ✦ button, or Command palette → “Toggle focus mode” |
 | Word count | Bottom status bar: `✦ 1,234 words · 6 min` |
 | New note in folder | Explorer **+** (or palette command) — created inside the folder you last clicked |
+| Explorer icon | Click the tile left of any folder/file → pick emoji or Lucide icon + colour (or right-click → **Set icon…**) |
+| Explorer icon for the open note | Command palette → “Set file-explorer icon for current note…” |
 
-Try it on the included demo: `demo/Notion-like Flow Demo.md` (copy it into your vault).
+Try it on the included demo: `demo/Ariadne Flow Demo.md` (copy it into your vault).
 
 ## 4. Frontmatter reference
 
@@ -81,7 +86,7 @@ cover: "[[my-banner.png]]"
 cover: attachments/cover.jpg
 ```
 
-**Built-in photo search:** open “Set page cover…” → the **Unsplash** / **Pexels** tabs let you search and one-click any photo as your cover (blank search = curated feed, “Load more” paginates). Both need a free API key: paste it once in the modal or under Settings → Notion-like Flow → Cover search (Unsplash: unsplash.com/developers, Pexels: pexels.com/api). Keys never leave your device. Photographer credit shows on hover in the picker.
+**Built-in photo search:** open “Set page cover…” → the **Unsplash** / **Pexels** tabs let you search and one-click any photo as your cover (blank search = curated feed, “Load more” paginates). Both need a free API key: paste it once in the modal or under Settings → Ariadne Flow → Cover search (Unsplash: unsplash.com/developers, Pexels: pexels.com/api). Keys never leave your device. Photographer credit shows on hover in the picker.
 
 ## 5. Toggle syntax
 
@@ -117,7 +122,7 @@ These are plain callouts, so they sync and export like normal Markdown.
 
 ## 8. Settings
 
-Settings → **Notion-like Flow**: slash menu on/off, drag handle on/off, color emoji, covers, breadcrumb, word count, Notion typography, full width, focus mode (+ dim)., plus new-note location., Unsplash/Pexels keys.
+Settings → **Ariadne Flow**: slash menu on/off, drag handle on/off, color emoji, covers, breadcrumb, word count, Notion typography, full width, focus mode (+ dim)., plus new-note location., Unsplash/Pexels keys.
 
 ## 9. Notes & limits
 
@@ -131,7 +136,7 @@ Settings → **Notion-like Flow**: slash menu on/off, drag handle on/off, color 
 ## 10. File map
 
 ```
-notion-like-flow/
+ariadne-flow/
 ├── manifest.json        # plugin id / version
 ├── main.js              # built bundle (copy to .obsidian/plugins/)
 ├── styles.css           # Notion styling (copy alongside main.js)
@@ -139,11 +144,17 @@ notion-like-flow/
 ├── esbuild.config.mjs
 ├── tsconfig.json
 ├── package.json
-└── demo/Notion-like Flow Demo.md
+└── demo/Ariadne Flow Demo.md
 ```
 
 ## 11. Changelog
 
+- **1.1.0** — **Renamed to Ariadne Flow** (plugin id `ariadne-flow`). Your settings are migrated automatically on first load (see Install step 3b). Plus a full performance pass: the workspace-wide MutationObserver now stays off unless page headers are in use, ignores Live Preview typing and our own DOM, and bails when a refresh is already queued; drag `pointermove`/`pointerup` listeners are attached only while a drag is armed instead of sitting on `window` forever; scroll/keypress no longer touch the handle when it isn't shown; hovering the same element short-circuits the hover computation; typing only refreshes the header of the note you're editing instead of every open tab; word count re-counts only when the text actually changed and no longer builds a one-string-per-word array (or forces a reflow in Reading view); the markdown post-processor does one query per block instead of three; the slash menu memoises its code-fence scan; and the file-explorer pass skips entirely when icons are off and caches each row's path and tile.
+- **1.0.20** — Emoji art and picker rebuilt in WhatsApp's image: flat **Noto** emoji (the Google set WhatsApp uses) replace Twemoji, with Twemoji → system-emoji fallback for anything Noto lacks (Unicode 15 glyphs). The picker is now WhatsApp's layout — one search field, sticky category headers, a dense grid, and a category bar at the bottom that filters (Clock · All · Smileys & People · Animals · Food · Travel · Activity · Objects · Symbols · Flags). Same panel in “Set page icon…” and in the explorer's Set icon picker. New settings: **Emoji art** (Noto / Twemoji / System) and **Picker accent** (WhatsApp green / theme accent).
+- **1.0.19** — Tiles-only explorer: every layout rule is gone. The plugin now adds just the icon tile (plus one `display:flex` on rows that get one, so tile and label stay on a line) and leaves padding, row height, indent, collapse arrow and hover styling entirely to Obsidian. The “Tidy rows” and “Row spacing” settings are removed; “Sidebar background” stays.
+- **1.0.18** — Explorer layout de-escalated: the collapse arrow keeps Obsidian's own size (a 6px gap instead of a forced 16px slot that opened a hole), and row padding / height / indent are no longer overridden at all. Settings gain a **Row spacing** switch: *Match Obsidian* (default, zero layout overrides) or *Roomier*.
+- **1.0.17** — Explorer row layout fix: the folder collapse arrow now owns a fixed 16px slot with a 4px gap before the icon tile, indentation guides sit in their own gutter instead of running through the arrow, and rows got 1px more breathing room (min-height 26px).
+- **1.0.16** — File-explorer icons (Capacities style): a rounded icon tile on every folder and file; click a tile or right-click → Set icon to pick any of 3,773 emoji or 157 bundled Lucide icons in 12 theme-adaptive colours. Rows you never touch get a sensible automatic icon (folder / page / image / video…). Icons follow renames + deletes. Optional tidy rows and a forced near-black sidebar; disable anything in Settings → File explorer.
 - **1.0.15** — Mobile compat pass: no keyboard-pop on modal open, block menu gains Insert-below (long-press reachable), input rows wrap on narrow screens.
 - **1.0.14** — Flat 2D emoji only: removed all Fluent 3D art, Twemoji everywhere with system fallback.
 - **1.0.13** — Full 3,773-emoji catalog (Unicode 15.1 + aliases + infinite scroll); Fluent 3D art for 1,910, Twemoji/system fallback for the rest.
@@ -166,5 +177,11 @@ MIT — do what you want with it. Enjoy the flow ✦
 ## 12. Credits
 
 - Slash menu icons: Lucide (ISC licence, (c) Lucide contributors) — bundled offline in `src/icons.ts`.
-- Page-icon emoji art: Twemoji (CC-BY 4.0, (c) Twitter/X contributors) — loaded from CDN at runtime with system-emoji fallback.
+- File-explorer icons: Lucide (ISC licence, (c) Lucide contributors) — bundled offline in `src/nav-icons.ts`.
+- Emoji art: **Noto**, via s9e/emoji-assets-noto (Apache 2.0, derived from Google's Noto Emoji) — loaded from CDN at runtime.
+- Emoji art fallback: Twemoji (CC-BY 4.0, (c) Twitter/X contributors) — used for the handful of glyphs Noto lacks, then your system font.
+- Picker category icons: Lucide (ISC licence, (c) Lucide contributors) — bundled offline in `src/nav-icons.ts`.
 - Emoji catalog: Unicode emoji-test 15.1 + iamcal short-name aliases.
+
+  **AI Warning:**
+Yes, AI has been used in the making of this Plugin but I only used Native/Locally ran AI only in my PC. So, Total power consumption/environmental harm is lower then the usual. Also, note that I am not an developer by any means, I only do it for the fun &  and I do know programing languages like Python, JS and HTML. 
