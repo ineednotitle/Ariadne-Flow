@@ -26,7 +26,7 @@ No dependencies at runtime. No network calls. Your notes stay plain Markdown.
 3. In Obsidian: **Settings → Community plugins → turn off Safe mode → enable “Ariadne Flow”**.
 4. Done — type `/` in any note.
 
-3b. **Coming from the old name?** The plugin id changed to `ariadne-flow` in 1.1.0. Obsidian treats that as a new install, so enable **“Ariadne Flow”** in Settings → Community plugins — on first run it copies your old `data.json` from `.obsidian/plugins/notion-like-flow/` automatically (settings, folder/file icons and API keys all carry over). You can delete that old folder afterwards.
+3b. **Coming from the old name?** The plugin id changed to `ariadne-flow` in 1.1.0. Obsidian treats that as a new install, so enable **“Ariadne Flow”** in Settings → Community plugins automatically (settings, folder/file icons and API keys all carry over). You can delete that old folder afterwards.
 
 > Updating: replace the same 3 files and press **Reload** (or restart Obsidian).
 
