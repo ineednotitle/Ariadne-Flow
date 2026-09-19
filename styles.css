@@ -1,38 +1,38 @@
 /* ============================================================
-   Notion-like Flow — styles
+   Ariadne Flow — styles
    Works in Live Preview + Reading view. No external assets.
    ============================================================ */
 
 /* ---------- Notion typography mode ---------- */
-body.nlf-notion-type {
+body.nlf-ariade-type {
   --nlf-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --nlf-line: 1.65;
 }
-body.nlf-notion-type .markdown-source-view.mod-cm6 .cm-scroller,
-body.nlf-notion-type .markdown-preview-view {
+body.nlf-ariade-type .markdown-source-view.mod-cm6 .cm-scroller,
+body.nlf-ariade-type .markdown-preview-view {
   font-family: var(--nlf-font);
   line-height: var(--nlf-line);
   letter-spacing: -0.003em;
 }
-body.nlf-notion-type .markdown-preview-view h1,
-body.nlf-notion-type .cm-line.HyperMD-header-1 { font-weight: 700; letter-spacing: -0.02em; }
-body.nlf-notion-type .markdown-preview-view h2,
-body.nlf-notion-type .cm-line.HyperMD-header-2 { font-weight: 650; letter-spacing: -0.015em; }
-body.nlf-notion-type .markdown-preview-view h3 { font-weight: 620; }
+body.nlf-ariade-type .markdown-preview-view h1,
+body.nlf-ariade-type .cm-line.HyperMD-header-1 { font-weight: 700; letter-spacing: -0.02em; }
+body.nlf-ariade-type .markdown-preview-view h2,
+body.nlf-ariade-type .cm-line.HyperMD-header-2 { font-weight: 650; letter-spacing: -0.015em; }
+body.nlf-ariade-type .markdown-preview-view h3 { font-weight: 620; }
 
 /* roomier blocks like Notion */
-body.nlf-notion-type .markdown-preview-view p,
-body.nlf-notion-type .markdown-preview-view ul,
-body.nlf-notion-type .markdown-preview-view ol,
-body.nlf-notion-type .markdown-preview-view blockquote,
-body.nlf-notion-type .markdown-preview-view pre {
+body.nlf-ariade-type .markdown-preview-view p,
+body.nlf-ariade-type .markdown-preview-view ul,
+body.nlf-ariade-type .markdown-preview-view ol,
+body.nlf-ariade-type .markdown-preview-view blockquote,
+body.nlf-ariade-type .markdown-preview-view pre {
   margin-block: 0.45em;
 }
-body.nlf-notion-type .cm-line { padding-block: 1px; }
+body.nlf-ariade-type .cm-line { padding-block: 1px; }
 
 /* dividers */
-body.nlf-notion-type .markdown-preview-view hr,
-body.nlf-notion-type .HyperMD-hr-bg {
+body.nlf-ariade-type .markdown-preview-view hr,
+body.nlf-ariade-type .HyperMD-hr-bg {
   border: none;
   border-top: 1.5px solid var(--background-modifier-border);
   margin: 1.4em 0;
@@ -40,7 +40,7 @@ body.nlf-notion-type .HyperMD-hr-bg {
 }
 
 /* checkboxes → Notion rounded squares */
-body.nlf-notion-type input[type="checkbox"] {
+body.nlf-ariade-type input[type="checkbox"] {
   border-radius: 4px;
   width: 1.05em; height: 1.05em;
 }
@@ -48,13 +48,13 @@ body.nlf-notion-type input[type="checkbox"] {
 /* tables → Notion grid */
 .nlf-table-wrap { overflow-x: auto; margin: 0.6em 0 0.9em; border: 1px solid var(--background-modifier-border); border-radius: 8px; }
 .nlf-table-wrap table { margin: 0 !important; border: none !important; width: 100%; border-collapse: collapse; }
-body.nlf-notion-type .markdown-preview-view th { background: var(--background-secondary); font-weight: 600; font-size: 0.86em; text-transform: none; }
-body.nlf-notion-type .markdown-preview-view th,
-body.nlf-notion-type .markdown-preview-view td { border: 1px solid var(--background-modifier-border); padding: 8px 12px; }
+body.nlf-ariade-type .markdown-preview-view th { background: var(--background-secondary); font-weight: 600; font-size: 0.86em; text-transform: none; }
+body.nlf-ariade-type .markdown-preview-view th,
+body.nlf-ariade-type .markdown-preview-view td { border: 1px solid var(--background-modifier-border); padding: 8px 12px; }
 
 /* code blocks softer like Notion */
-body.nlf-notion-type .markdown-preview-view pre,
-body.nlf-notion-type .cm-embed-block.cm-codeblock {
+body.nlf-ariade-type .markdown-preview-view pre,
+body.nlf-ariade-type .cm-embed-block.cm-codeblock {
   border-radius: 10px;
 }
 
